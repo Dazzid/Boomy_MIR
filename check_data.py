@@ -47,7 +47,7 @@ async def check_boomy(file_path, session):
         logging.info('-' * 30)
         return None
 
-async def process_mp3_files(folder_path):
+async def process_mp3_files(folder_path, existing_files=set()):
     wobinn_boomy_files = []
     async with aiohttp.ClientSession() as session:
         tasks = []
@@ -55,7 +55,8 @@ async def process_mp3_files(folder_path):
             for file in files:
                 if file.endswith('.mp3'):
                     file_path = os.path.join(root, file)
-                    tasks.append(check_boomy(file_path, session))
+                    if file_path not in existing_files:
+                        tasks.append(check_boomy(file_path, session))
 
         results = await asyncio.gather(*tasks)
 
@@ -65,8 +66,20 @@ async def process_mp3_files(folder_path):
 
 async def main():
     folder_path = '/workspace/wobinn/'
-    good_files = await process_mp3_files(folder_path)
-    print(len(good_files))
+
+    # Read existing files from 'wobinn_boomy_files.txt'
+    existing_files = set()
+    if os.path.exists('wobinn_boomy_files.txt'):
+        with open('wobinn_boomy_files.txt', 'r') as f:
+            existing_files = {line.strip() for line in f}
+
+    wobinn_boomy_files = await process_mp3_files(folder_path, existing_files)
+    print(len(wobinn_boomy_files))
+    
+    # Save the list of files to 'wobinn_boomy_files.txt'
+    with open('wobinn_boomy_files.txt', 'a') as f:
+        for file in wobinn_boomy_files:
+            f.write(f'{file}\n')
 
 # Run the event loop
 if __name__ == "__main__":
