@@ -1,0 +1,33 @@
+# get genre_dortmund
+wget -nc https://essentia.upf.edu/models/classifiers/genre_dortmund/genre_dortmund-musicnn-msd-2.pb
+# get genre_rosamerica
+wget -nc https://essentia.upf.edu/models/classifiers/genre_rosamerica/genre_rosamerica-musicnn-msd-2.pb
+# get genre_tzanetakis
+wget -nc https://essentia.upf.edu/models/classifiers/genre_tzanetakis/genre_tzanetakis-musicnn-msd-2.pb
+# get genre_electronic
+wget -nc https://essentia.upf.edu/models/classifiers/genre_electronic/genre_electronic-musicnn-msd-2.pb
+# get mood_acoustic
+wget -nc https://essentia.upf.edu/models/classifiers/mood_acoustic/mood_acoustic-musicnn-msd-2.pb
+# get mood_electronic
+wget -nc https://essentia.upf.edu/models/classifiers/mood_electronic/mood_electronic-musicnn-msd-2.pb
+# get mood_aggressive
+wget -nc https://essentia.upf.edu/models/classifiers/mood_aggressive/mood_aggressive-musicnn-msd-2.pb
+# get mood_relaxed
+wget -nc https://essentia.upf.edu/models/classifiers/mood_relaxed/mood_relaxed-musicnn-msd-2.pb
+# get mood_happy
+wget -nc https://essentia.upf.edu/models/classifiers/mood_happy/mood_happy-musicnn-msd-2.pb
+# get mood_sad
+wget -nc https://essentia.upf.edu/models/classifiers/mood_sad/mood_sad-musicnn-msd-2.pb
+# get mood_party
+wget -nc https://essentia.upf.edu/models/classifiers/mood_party/mood_party-musicnn-msd-2.pb
+# get danceability
+wget -nc https://essentia.upf.edu/models/classifiers/danceability/danceability-musicnn-msd-2.pb
+# get gender
+wget -nc https://essentia.upf.edu/models/classifiers/gender/gender-musicnn-msd-2.pb
+# get tonal_atonal
+wget -nc https://essentia.upf.edu/models/classifiers/tonal_atonal/tonal_atonal-musicnn-msd-2.pb
+# get voice_instrumental
+wget -nc https://essentia.upf.edu/models/classifiers/voice_instrumental/voice_instrumental-musicnn-msd-2.pb
+
+# move all models to the models folder
+mv *.pb ./models/
